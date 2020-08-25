@@ -30,17 +30,16 @@
             "relationshipName": "logParametreEnvironement"
         },
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "depense",
+            "otherEntityRelationshipName": "phaseProduction",
+            "relationshipName": "listeDepenses"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "batiment",
             "otherEntityRelationshipName": "phaseProduction",
             "relationshipName": "batiment",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "depense",
-            "otherEntityRelationshipName": "phaseProduction",
-            "relationshipName": "listeDepenses",
             "otherEntityField": "id"
         }
     ],

@@ -33,11 +33,12 @@ public class Depense implements Serializable {
     @Column(name = "date_demande")
     private LocalDate dateDemande;
 
-    @Column(name = "tva")
-    private Integer tva;
-
     @Column(name = "etat_depense")
     private String etatDepense;
+
+    @ManyToOne
+    @JsonIgnoreProperties("depenses")
+    private Produit produit;
 
     @ManyToOne
     @JsonIgnoreProperties("depenses")
@@ -46,6 +47,10 @@ public class Depense implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("depenses")
     private Facture facture;
+
+    @ManyToOne
+    @JsonIgnoreProperties("listeDepenses")
+    private PhaseProduction phaseProduction;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -95,19 +100,6 @@ public class Depense implements Serializable {
         this.dateDemande = dateDemande;
     }
 
-    public Integer getTva() {
-        return tva;
-    }
-
-    public Depense tva(Integer tva) {
-        this.tva = tva;
-        return this;
-    }
-
-    public void setTva(Integer tva) {
-        this.tva = tva;
-    }
-
     public String getEtatDepense() {
         return etatDepense;
     }
@@ -119,6 +111,19 @@ public class Depense implements Serializable {
 
     public void setEtatDepense(String etatDepense) {
         this.etatDepense = etatDepense;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public Depense produit(Produit produit) {
+        this.produit = produit;
+        return this;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 
     public Fournisseur getFoursnisseur() {
@@ -146,6 +151,19 @@ public class Depense implements Serializable {
     public void setFacture(Facture facture) {
         this.facture = facture;
     }
+
+    public PhaseProduction getPhaseProduction() {
+        return phaseProduction;
+    }
+
+    public Depense phaseProduction(PhaseProduction phaseProduction) {
+        this.phaseProduction = phaseProduction;
+        return this;
+    }
+
+    public void setPhaseProduction(PhaseProduction phaseProduction) {
+        this.phaseProduction = phaseProduction;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -171,7 +189,6 @@ public class Depense implements Serializable {
             ", codeDepense='" + getCodeDepense() + "'" +
             ", quantite=" + getQuantite() +
             ", dateDemande='" + getDateDemande() + "'" +
-            ", tva=" + getTva() +
             ", etatDepense='" + getEtatDepense() + "'" +
             "}";
     }

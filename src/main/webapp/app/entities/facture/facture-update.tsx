@@ -12,7 +12,7 @@ import { IFacture } from 'app/shared/model/facture.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
-export interface IFactureUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IFactureUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> { }
 
 export const FactureUpdate = (props: IFactureUpdateProps) => {
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
@@ -53,105 +53,89 @@ export const FactureUpdate = (props: IFactureUpdateProps) => {
   };
 
   return (
-    <div>
-      <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="eAvicultureApp.facture.home.createOrEditLabel">Create or edit a Facture</h2>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md="8">
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            <AvForm model={isNew ? {} : factureEntity} onSubmit={saveEntity}>
-              {!isNew ? (
-                <AvGroup>
-                  <Label for="facture-id">ID</Label>
-                  <AvInput id="facture-id" type="text" className="form-control" name="id" required readOnly />
-                </AvGroup>
-              ) : null}
-              <AvGroup>
-                <Label id="numeroFactureLabel" for="facture-numeroFacture">
-                  Numero Facture
+    <div className="col-12 grid-margin stretch-card">
+      <div className="card">
+        <div className="card-body">
+          <h4 className="card-title">Create or edit a Facture</h4>
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                  <AvForm model={isNew ? {} : factureEntity} onSubmit={saveEntity}>
+                    {!isNew ? (
+                      <AvGroup>
+                        <Label for="facture-id">ID</Label>
+                        <AvInput id="facture-id" type="text" className="form-control" name="id" required readOnly />
+                      </AvGroup>
+                    ) : null}
+                    <AvGroup>
+                      <Label id="numeroFactureLabel" for="facture-numeroFacture">
+                        Numero Facture
                 </Label>
-                <AvField id="facture-numeroFacture" type="text" name="numeroFacture" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="dateFacturationLabel" for="facture-dateFacturation">
-                  Date Facturation
+                      <AvField id="facture-numeroFacture" type="text" name="numeroFacture" />
+                    </AvGroup>
+                    <AvGroup>
+                      <Label id="dateFacturationLabel" for="facture-dateFacturation">
+                        Date Facturation
                 </Label>
-                <AvField id="facture-dateFacturation" type="date" className="form-control" name="dateFacturation" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="prixUniteLabel" for="facture-prixUnite">
-                  Prix Unite
+                      <AvField id="facture-dateFacturation" type="date" className="form-control" name="dateFacturation" />
+                    </AvGroup>
+                    <AvGroup>
+                      <Label id="prixUnitLabel" for="facture-prixUnit">
+                        Prix Unit
                 </Label>
-                <AvField id="facture-prixUnite" type="text" name="prixUnite" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="tvaLabel" for="facture-tva">
-                  Tva
+                      <AvField id="facture-prixUnit" type="text" name="prixUnit" />
+                    </AvGroup>
+                    <AvGroup>
+                      <Label id="tvaLabel" for="facture-tva">
+                        Tva
                 </Label>
-                <AvField id="facture-tva" type="string" className="form-control" name="tva" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="quantiteLabel" for="facture-quantite">
-                  Quantite
+                      <AvField id="facture-tva" type="string" className="form-control" name="tva" />
+                    </AvGroup>
+                    <AvGroup>
+                      <Label id="fraisLivraisonLabel" for="facture-fraisLivraison">
+                        Frais Livraison
                 </Label>
-                <AvField id="facture-quantite" type="string" className="form-control" name="quantite" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="fraisLivraisonLabel" for="facture-fraisLivraison">
-                  Frais Livraison
+                      <AvField id="facture-fraisLivraison" type="string" className="form-control" name="fraisLivraison" />
+                    </AvGroup>
+                    <AvGroup>
+                      <Label id="methodPaimentLabel" for="facture-methodPaiment">
+                        Method Paiment
                 </Label>
-                <AvField id="facture-fraisLivraison" type="string" className="form-control" name="fraisLivraison" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="methodPaimentLabel" for="facture-methodPaiment">
-                  Method Paiment
-                </Label>
-                <AvField id="facture-methodPaiment" type="text" name="methodPaiment" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="etatFactureLabel" for="facture-etatFacture">
-                  Etat Facture
-                </Label>
-                <AvField id="facture-etatFacture" type="text" name="etatFacture" />
-              </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/facture" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
+                      <AvField id="facture-methodPaiment" type="text" name="methodPaiment" />
+                    </AvGroup>
+                    <Button tag={Link} id="cancel-save" to="/facture" className="btn btn-light">
+                      <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
-              </Button>
+                    </Button>
               &nbsp;
-              <Button color="primary" id="save-entity" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
+                    <Button color="primary" id="save-entity" type="submit" disabled={updating} className="btn btn-primary mr-2">
+                      <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>
-            </AvForm>
-          )}
-        </Col>
-      </Row>
-    </div>
+                  </AvForm>
+                )}
+        </div>
+        </div>
+        </div>
   );
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  factureEntity: storeState.facture.entity,
+          factureEntity: storeState.facture.entity,
   loading: storeState.facture.loading,
   updating: storeState.facture.updating,
   updateSuccess: storeState.facture.updateSuccess
 });
 
 const mapDispatchToProps = {
-  getEntity,
-  updateEntity,
-  createEntity,
-  reset
-};
+          getEntity,
+          updateEntity,
+          createEntity,
+          reset
+        };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
-type DispatchProps = typeof mapDispatchToProps;
+        type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(FactureUpdate);
+        export default connect(mapStateToProps, mapDispatchToProps)(FactureUpdate);

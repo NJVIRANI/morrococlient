@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 import { ILogParametreEnvironement } from 'app/shared/model/log-parametre-environement.model';
-import { IBatiment } from 'app/shared/model/batiment.model';
 import { IDepense } from 'app/shared/model/depense.model';
+import { IBatiment } from 'app/shared/model/batiment.model';
 
 export interface IPhaseProduction {
   id?: number;
@@ -11,8 +11,8 @@ export interface IPhaseProduction {
   nombrePoulets?: number;
   nombreDeces?: number;
   logParametreEnvironements?: ILogParametreEnvironement[];
+  listeDepenses?: IDepense[];
   batiment?: IBatiment;
-  listeDepenses?: IDepense;
 }
 
 export const defaultValue: Readonly<IPhaseProduction> = {};

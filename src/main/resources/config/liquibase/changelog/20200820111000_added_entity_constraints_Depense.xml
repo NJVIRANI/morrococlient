@@ -8,6 +8,12 @@
     -->
     <changeSet id="20200820111000-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="produit_id"
+                                 baseTableName="depense"
+                                 constraintName="fk_depense_produit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produit"/>
+
         <addForeignKeyConstraint baseColumnNames="foursnisseur_id"
                                  baseTableName="depense"
                                  constraintName="fk_depense_foursnisseur_id"
@@ -19,6 +25,12 @@
                                  constraintName="fk_depense_facture_id"
                                  referencedColumnNames="id"
                                  referencedTableName="facture"/>
+
+        <addForeignKeyConstraint baseColumnNames="phase_production_id"
+                                 baseTableName="depense"
+                                 constraintName="fk_depense_phase_production_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="phase_production"/>
 
     </changeSet>
 </databaseChangeLog>

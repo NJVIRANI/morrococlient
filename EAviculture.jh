@@ -1,4 +1,3 @@
-
 entity Employe {
 	prenom String,
 	nom String,
@@ -13,7 +12,6 @@ entity Employe {
 }
 
 entity Fonction {
-	prenom String,
   	codeFonction String,
   	description String
 }
@@ -40,12 +38,10 @@ entity Emplacement{
 entity Facture{
 	numeroFacture String,
     dateFacturation LocalDate,
-    prixUnite BigDecimal,
+    prixUnit BigDecimal,
     tva Integer,
-    quantite Integer,
     fraisLivraison Long,
     methodPaiment String,
-    etatFacture String
 }
 
 
@@ -62,14 +58,12 @@ entity Depense{
 	codeDepense String,
     quantite Integer,
     dateDemande LocalDate,
-    tva Integer,
     etatDepense String    
 }
 
 entity Produit{
 	codeProduit String,
-	designation String,
-    prixUnitaire BigDecimal
+	designation String
 }
 entity TypeProduit{
 	codeTypeProduit String,
@@ -110,15 +104,15 @@ entity LogParametreEnvironement{
 
 relationship OneToOne {
     Produit{type} to TypeProduit
-} 
+}
 
 relationship ManyToOne {
 	Employe{fonction} to Fonction,
+	Depense{produit} to Produit,
     Depense{foursnisseur} to Fournisseur,
     Emplacement{stock} to Stock,
     Produit{emplacement} to Emplacement,
     PhaseProduction{batiment} to Batiment,
-    PhaseProduction{listeDepenses} to Depense,
     Vente{client} to Client,
     Vente{phaseProduction} to PhaseProduction
 }
@@ -126,5 +120,5 @@ relationship ManyToOne {
 relationship OneToMany {
     Facture{depense} to Depense
     PhaseProduction{logParametreEnvironement} to LogParametreEnvironement
-    Batiment{ligneEclairage} to LigneEclairage
+    PhaseProduction{listeDepenses} to Depense
 } 

@@ -9,8 +9,6 @@ import { IRootState } from 'app/shared/reducers';
 
 import { IBatiment } from 'app/shared/model/batiment.model';
 import { getEntities as getBatiments } from 'app/entities/batiment/batiment.reducer';
-import { IDepense } from 'app/shared/model/depense.model';
-import { getEntities as getDepenses } from 'app/entities/depense/depense.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './phase-production.reducer';
 import { IPhaseProduction } from 'app/shared/model/phase-production.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -20,10 +18,9 @@ export interface IPhaseProductionUpdateProps extends StateProps, DispatchProps, 
 
 export const PhaseProductionUpdate = (props: IPhaseProductionUpdateProps) => {
   const [batimentId, setBatimentId] = useState('0');
-  const [listeDepensesId, setListeDepensesId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { phaseProductionEntity, batiments, depenses, loading, updating } = props;
+  const { phaseProductionEntity, batiments, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/phase-production');
@@ -37,7 +34,6 @@ export const PhaseProductionUpdate = (props: IPhaseProductionUpdateProps) => {
     }
 
     props.getBatiments();
-    props.getDepenses();
   }, []);
 
   useEffect(() => {
@@ -62,14 +58,10 @@ export const PhaseProductionUpdate = (props: IPhaseProductionUpdateProps) => {
   };
 
   return (
-    <div>
-      <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="eAvicultureApp.phaseProduction.home.createOrEditLabel">Create or edit a PhaseProduction</h2>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md="8">
+    <div className="col-12 grid-margin stretch-card">
+      <div className="card">
+        <div className="card-body">
+          <h4 className="card-title" id="eAvicultureApp.batiment.home.createOrEditLabel">Create or edit a Phase Production</h4>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -123,40 +115,26 @@ export const PhaseProductionUpdate = (props: IPhaseProductionUpdateProps) => {
                     : null}
                 </AvInput>
               </AvGroup>
-              <AvGroup>
-                <Label for="phase-production-listeDepenses">Liste Depenses</Label>
-                <AvInput id="phase-production-listeDepenses" type="select" className="form-control" name="listeDepenses.id">
-                  <option value="" key="0" />
-                  {depenses
-                    ? depenses.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
-              </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/phase-production" replace color="info">
+              <Button tag={Link} id="cancel-save" to="/phase-production" className="btn btn-light">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
-              <Button color="primary" id="save-entity" type="submit" disabled={updating}>
+              <Button color="primary" id="save-entity" type="submit" disabled={updating} className="btn btn-primary mr-2">
                 <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>
             </AvForm>
           )}
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
   batiments: storeState.batiment.entities,
-  depenses: storeState.depense.entities,
   phaseProductionEntity: storeState.phaseProduction.entity,
   loading: storeState.phaseProduction.loading,
   updating: storeState.phaseProduction.updating,
@@ -165,7 +143,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 
 const mapDispatchToProps = {
   getBatiments,
-  getDepenses,
   getEntity,
   updateEntity,
   createEntity,

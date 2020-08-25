@@ -39,23 +39,17 @@ public class FactureResourceIT {
     private static final LocalDate DEFAULT_DATE_FACTURATION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_FACTURATION = LocalDate.now(ZoneId.systemDefault());
 
-    private static final BigDecimal DEFAULT_PRIX_UNITE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_PRIX_UNITE = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_PRIX_UNIT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_PRIX_UNIT = new BigDecimal(2);
 
     private static final Integer DEFAULT_TVA = 1;
     private static final Integer UPDATED_TVA = 2;
-
-    private static final Integer DEFAULT_QUANTITE = 1;
-    private static final Integer UPDATED_QUANTITE = 2;
 
     private static final Long DEFAULT_FRAIS_LIVRAISON = 1L;
     private static final Long UPDATED_FRAIS_LIVRAISON = 2L;
 
     private static final String DEFAULT_METHOD_PAIMENT = "AAAAAAAAAA";
     private static final String UPDATED_METHOD_PAIMENT = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ETAT_FACTURE = "AAAAAAAAAA";
-    private static final String UPDATED_ETAT_FACTURE = "BBBBBBBBBB";
 
     @Autowired
     private FactureRepository factureRepository;
@@ -78,12 +72,10 @@ public class FactureResourceIT {
         Facture facture = new Facture()
             .numeroFacture(DEFAULT_NUMERO_FACTURE)
             .dateFacturation(DEFAULT_DATE_FACTURATION)
-            .prixUnite(DEFAULT_PRIX_UNITE)
+            .prixUnit(DEFAULT_PRIX_UNIT)
             .tva(DEFAULT_TVA)
-            .quantite(DEFAULT_QUANTITE)
             .fraisLivraison(DEFAULT_FRAIS_LIVRAISON)
-            .methodPaiment(DEFAULT_METHOD_PAIMENT)
-            .etatFacture(DEFAULT_ETAT_FACTURE);
+            .methodPaiment(DEFAULT_METHOD_PAIMENT);
         return facture;
     }
     /**
@@ -96,12 +88,10 @@ public class FactureResourceIT {
         Facture facture = new Facture()
             .numeroFacture(UPDATED_NUMERO_FACTURE)
             .dateFacturation(UPDATED_DATE_FACTURATION)
-            .prixUnite(UPDATED_PRIX_UNITE)
+            .prixUnit(UPDATED_PRIX_UNIT)
             .tva(UPDATED_TVA)
-            .quantite(UPDATED_QUANTITE)
             .fraisLivraison(UPDATED_FRAIS_LIVRAISON)
-            .methodPaiment(UPDATED_METHOD_PAIMENT)
-            .etatFacture(UPDATED_ETAT_FACTURE);
+            .methodPaiment(UPDATED_METHOD_PAIMENT);
         return facture;
     }
 
@@ -127,12 +117,10 @@ public class FactureResourceIT {
         Facture testFacture = factureList.get(factureList.size() - 1);
         assertThat(testFacture.getNumeroFacture()).isEqualTo(DEFAULT_NUMERO_FACTURE);
         assertThat(testFacture.getDateFacturation()).isEqualTo(DEFAULT_DATE_FACTURATION);
-        assertThat(testFacture.getPrixUnite()).isEqualTo(DEFAULT_PRIX_UNITE);
+        assertThat(testFacture.getPrixUnit()).isEqualTo(DEFAULT_PRIX_UNIT);
         assertThat(testFacture.getTva()).isEqualTo(DEFAULT_TVA);
-        assertThat(testFacture.getQuantite()).isEqualTo(DEFAULT_QUANTITE);
         assertThat(testFacture.getFraisLivraison()).isEqualTo(DEFAULT_FRAIS_LIVRAISON);
         assertThat(testFacture.getMethodPaiment()).isEqualTo(DEFAULT_METHOD_PAIMENT);
-        assertThat(testFacture.getEtatFacture()).isEqualTo(DEFAULT_ETAT_FACTURE);
     }
 
     @Test
@@ -168,12 +156,10 @@ public class FactureResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(facture.getId().intValue())))
             .andExpect(jsonPath("$.[*].numeroFacture").value(hasItem(DEFAULT_NUMERO_FACTURE)))
             .andExpect(jsonPath("$.[*].dateFacturation").value(hasItem(DEFAULT_DATE_FACTURATION.toString())))
-            .andExpect(jsonPath("$.[*].prixUnite").value(hasItem(DEFAULT_PRIX_UNITE.intValue())))
+            .andExpect(jsonPath("$.[*].prixUnit").value(hasItem(DEFAULT_PRIX_UNIT.intValue())))
             .andExpect(jsonPath("$.[*].tva").value(hasItem(DEFAULT_TVA)))
-            .andExpect(jsonPath("$.[*].quantite").value(hasItem(DEFAULT_QUANTITE)))
             .andExpect(jsonPath("$.[*].fraisLivraison").value(hasItem(DEFAULT_FRAIS_LIVRAISON.intValue())))
-            .andExpect(jsonPath("$.[*].methodPaiment").value(hasItem(DEFAULT_METHOD_PAIMENT)))
-            .andExpect(jsonPath("$.[*].etatFacture").value(hasItem(DEFAULT_ETAT_FACTURE)));
+            .andExpect(jsonPath("$.[*].methodPaiment").value(hasItem(DEFAULT_METHOD_PAIMENT)));
     }
     
     @Test
@@ -189,12 +175,10 @@ public class FactureResourceIT {
             .andExpect(jsonPath("$.id").value(facture.getId().intValue()))
             .andExpect(jsonPath("$.numeroFacture").value(DEFAULT_NUMERO_FACTURE))
             .andExpect(jsonPath("$.dateFacturation").value(DEFAULT_DATE_FACTURATION.toString()))
-            .andExpect(jsonPath("$.prixUnite").value(DEFAULT_PRIX_UNITE.intValue()))
+            .andExpect(jsonPath("$.prixUnit").value(DEFAULT_PRIX_UNIT.intValue()))
             .andExpect(jsonPath("$.tva").value(DEFAULT_TVA))
-            .andExpect(jsonPath("$.quantite").value(DEFAULT_QUANTITE))
             .andExpect(jsonPath("$.fraisLivraison").value(DEFAULT_FRAIS_LIVRAISON.intValue()))
-            .andExpect(jsonPath("$.methodPaiment").value(DEFAULT_METHOD_PAIMENT))
-            .andExpect(jsonPath("$.etatFacture").value(DEFAULT_ETAT_FACTURE));
+            .andExpect(jsonPath("$.methodPaiment").value(DEFAULT_METHOD_PAIMENT));
     }
 
     @Test
@@ -220,12 +204,10 @@ public class FactureResourceIT {
         updatedFacture
             .numeroFacture(UPDATED_NUMERO_FACTURE)
             .dateFacturation(UPDATED_DATE_FACTURATION)
-            .prixUnite(UPDATED_PRIX_UNITE)
+            .prixUnit(UPDATED_PRIX_UNIT)
             .tva(UPDATED_TVA)
-            .quantite(UPDATED_QUANTITE)
             .fraisLivraison(UPDATED_FRAIS_LIVRAISON)
-            .methodPaiment(UPDATED_METHOD_PAIMENT)
-            .etatFacture(UPDATED_ETAT_FACTURE);
+            .methodPaiment(UPDATED_METHOD_PAIMENT);
 
         restFactureMockMvc.perform(put("/api/factures")
             .contentType(MediaType.APPLICATION_JSON)
@@ -238,12 +220,10 @@ public class FactureResourceIT {
         Facture testFacture = factureList.get(factureList.size() - 1);
         assertThat(testFacture.getNumeroFacture()).isEqualTo(UPDATED_NUMERO_FACTURE);
         assertThat(testFacture.getDateFacturation()).isEqualTo(UPDATED_DATE_FACTURATION);
-        assertThat(testFacture.getPrixUnite()).isEqualTo(UPDATED_PRIX_UNITE);
+        assertThat(testFacture.getPrixUnit()).isEqualTo(UPDATED_PRIX_UNIT);
         assertThat(testFacture.getTva()).isEqualTo(UPDATED_TVA);
-        assertThat(testFacture.getQuantite()).isEqualTo(UPDATED_QUANTITE);
         assertThat(testFacture.getFraisLivraison()).isEqualTo(UPDATED_FRAIS_LIVRAISON);
         assertThat(testFacture.getMethodPaiment()).isEqualTo(UPDATED_METHOD_PAIMENT);
-        assertThat(testFacture.getEtatFacture()).isEqualTo(UPDATED_ETAT_FACTURE);
     }
 
     @Test

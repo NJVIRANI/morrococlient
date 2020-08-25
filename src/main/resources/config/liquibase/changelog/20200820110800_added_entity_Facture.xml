@@ -22,22 +22,16 @@
             <column name="date_facturation" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="prix_unite" type="decimal(21,2)">
+            <column name="prix_unit" type="decimal(21,2)">
                 <constraints nullable="true" />
             </column>
             <column name="tva" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="quantite" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="frais_livraison" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="method_paiment" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="etat_facture" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -65,12 +59,10 @@
             <column name="id" type="numeric"/>
             <column name="numero_facture" type="string"/>
             <column name="date_facturation" type="date"/>
-            <column name="prix_unite" type="numeric"/>
+            <column name="prix_unit" type="numeric"/>
             <column name="tva" type="numeric"/>
-            <column name="quantite" type="numeric"/>
             <column name="frais_livraison" type="numeric"/>
             <column name="method_paiment" type="string"/>
-            <column name="etat_facture" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

@@ -53,14 +53,10 @@ export const FonctionUpdate = (props: IFonctionUpdateProps) => {
   };
 
   return (
-    <div>
-      <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="eAvicultureApp.fonction.home.createOrEditLabel">Create or edit a Fonction</h2>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md="8">
+    <div className="col-12 grid-margin stretch-card">
+      <div className="card">
+        <div className="card-body">
+          <h4 className="card-title" id="eAvicultureApp.batiment.home.createOrEditLabel">Create or edit a Fonction</h4>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -71,12 +67,6 @@ export const FonctionUpdate = (props: IFonctionUpdateProps) => {
                   <AvInput id="fonction-id" type="text" className="form-control" name="id" required readOnly />
                 </AvGroup>
               ) : null}
-              <AvGroup>
-                <Label id="prenomLabel" for="fonction-prenom">
-                  Prenom
-                </Label>
-                <AvField id="fonction-prenom" type="text" name="prenom" />
-              </AvGroup>
               <AvGroup>
                 <Label id="codeFonctionLabel" for="fonction-codeFonction">
                   Code Fonction
@@ -89,20 +79,20 @@ export const FonctionUpdate = (props: IFonctionUpdateProps) => {
                 </Label>
                 <AvField id="fonction-description" type="text" name="description" />
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/fonction" replace color="info">
+              <Button tag={Link} id="cancel-save" to="/fonction" className="btn btn-light">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
-              <Button color="primary" id="save-entity" type="submit" disabled={updating}>
+              <Button color="primary" id="save-entity" type="submit" disabled={updating} className="btn btn-primary mr-2">
                 <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>
             </AvForm>
           )}
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };

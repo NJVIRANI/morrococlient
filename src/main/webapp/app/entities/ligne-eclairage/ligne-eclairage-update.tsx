@@ -7,8 +7,6 @@ import { ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipste
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { IBatiment } from 'app/shared/model/batiment.model';
-import { getEntities as getBatiments } from 'app/entities/batiment/batiment.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './ligne-eclairage.reducer';
 import { ILigneEclairage } from 'app/shared/model/ligne-eclairage.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -17,10 +15,9 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface ILigneEclairageUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const LigneEclairageUpdate = (props: ILigneEclairageUpdateProps) => {
-  const [batimentId, setBatimentId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { ligneEclairageEntity, batiments, loading, updating } = props;
+  const { ligneEclairageEntity, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/ligne-eclairage');
@@ -32,8 +29,6 @@ export const LigneEclairageUpdate = (props: ILigneEclairageUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
-
-    props.getBatiments();
   }, []);
 
   useEffect(() => {
@@ -112,19 +107,6 @@ export const LigneEclairageUpdate = (props: ILigneEclairageUpdateProps) => {
                 </Label>
                 <AvField id="ligne-eclairage-luxChoisi" type="string" className="form-control" name="luxChoisi" />
               </AvGroup>
-              <AvGroup>
-                <Label for="ligne-eclairage-batiment">Batiment</Label>
-                <AvInput id="ligne-eclairage-batiment" type="select" className="form-control" name="batiment.id">
-                  <option value="" key="0" />
-                  {batiments
-                    ? batiments.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
-              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/ligne-eclairage" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
@@ -144,7 +126,6 @@ export const LigneEclairageUpdate = (props: ILigneEclairageUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  batiments: storeState.batiment.entities,
   ligneEclairageEntity: storeState.ligneEclairage.entity,
   loading: storeState.ligneEclairage.loading,
   updating: storeState.ligneEclairage.updating,
@@ -152,7 +133,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getBatiments,
   getEntity,
   updateEntity,
   createEntity,

@@ -8,10 +8,6 @@
         {
             "fieldName": "designation",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "prixUnitaire",
-            "fieldType": "BigDecimal"
         }
     ],
     "relationships": [

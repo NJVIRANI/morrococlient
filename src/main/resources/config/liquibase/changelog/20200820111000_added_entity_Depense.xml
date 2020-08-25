@@ -25,16 +25,19 @@
             <column name="date_demande" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="tva" type="integer">
+            <column name="etat_depense" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="etat_depense" type="varchar(255)">
+            <column name="produit_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="foursnisseur_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="facture_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="phase_production_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -63,7 +66,6 @@
             <column name="code_depense" type="string"/>
             <column name="quantite" type="numeric"/>
             <column name="date_demande" type="date"/>
-            <column name="tva" type="numeric"/>
             <column name="etat_depense" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>

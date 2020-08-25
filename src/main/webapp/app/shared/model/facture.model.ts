@@ -5,12 +5,10 @@ export interface IFacture {
   id?: number;
   numeroFacture?: string;
   dateFacturation?: Moment;
-  prixUnite?: number;
+  prixUnit?: number;
   tva?: number;
-  quantite?: number;
   fraisLivraison?: number;
   methodPaiment?: string;
-  etatFacture?: string;
   depenses?: IDepense[];
 }
 

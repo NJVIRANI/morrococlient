@@ -14,11 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="batiment"/>
 
-        <addForeignKeyConstraint baseColumnNames="liste_depenses_id"
-                                 baseTableName="phase_production"
-                                 constraintName="fk_phase_production_liste_depenses_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="depense"/>
-
     </changeSet>
 </databaseChangeLog>

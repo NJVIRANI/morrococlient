@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.math.BigDecimal;
 
 /**
  * A Produit.
@@ -29,9 +28,6 @@ public class Produit implements Serializable {
 
     @Column(name = "designation")
     private String designation;
-
-    @Column(name = "prix_unitaire", precision = 21, scale = 2)
-    private BigDecimal prixUnitaire;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -74,19 +70,6 @@ public class Produit implements Serializable {
 
     public void setDesignation(String designation) {
         this.designation = designation;
-    }
-
-    public BigDecimal getPrixUnitaire() {
-        return prixUnitaire;
-    }
-
-    public Produit prixUnitaire(BigDecimal prixUnitaire) {
-        this.prixUnitaire = prixUnitaire;
-        return this;
-    }
-
-    public void setPrixUnitaire(BigDecimal prixUnitaire) {
-        this.prixUnitaire = prixUnitaire;
     }
 
     public TypeProduit getType() {
@@ -138,7 +121,6 @@ public class Produit implements Serializable {
             "id=" + getId() +
             ", codeProduit='" + getCodeProduit() + "'" +
             ", designation='" + getDesignation() + "'" +
-            ", prixUnitaire=" + getPrixUnitaire() +
             "}";
     }
 }

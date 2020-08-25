@@ -49,8 +49,6 @@ export const LigneEclairageDetail = (props: ILigneEclairageDetailProps) => {
             <span id="luxChoisi">Lux Choisi</span>
           </dt>
           <dd>{ligneEclairageEntity.luxChoisi}</dd>
-          <dt>Batiment</dt>
-          <dd>{ligneEclairageEntity.batiment ? ligneEclairageEntity.batiment.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/ligne-eclairage" replace color="info">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>

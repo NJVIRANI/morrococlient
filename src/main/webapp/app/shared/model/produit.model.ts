@@ -5,7 +5,6 @@ export interface IProduit {
   id?: number;
   codeProduit?: string;
   designation?: string;
-  prixUnitaire?: number;
   type?: ITypeProduit;
   emplacement?: IEmplacement;
 }

@@ -2,10 +2,6 @@
     "name": "Fonction",
     "fields": [
         {
-            "fieldName": "prenom",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "codeFonction",
             "fieldType": "String"
         },

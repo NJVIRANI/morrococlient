@@ -53,14 +53,10 @@ export const FournisseurUpdate = (props: IFournisseurUpdateProps) => {
   };
 
   return (
-    <div>
-      <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="eAvicultureApp.fournisseur.home.createOrEditLabel">Create or edit a Fournisseur</h2>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md="8">
+    <div className="col-12 grid-margin stretch-card">
+      <div className="card">
+        <div className="card-body">
+          <h4 className="card-title" id="eAvicultureApp.batiment.home.createOrEditLabel">Create or edit a Fournisseur</h4>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -95,20 +91,20 @@ export const FournisseurUpdate = (props: IFournisseurUpdateProps) => {
                 </Label>
                 <AvField id="fournisseur-numeroTel" type="text" name="numeroTel" />
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/fournisseur" replace color="info">
+              <Button tag={Link} id="cancel-save" to="/fournisseur" className="btn btn-light">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
-              <Button color="primary" id="save-entity" type="submit" disabled={updating}>
+              <Button color="primary" id="save-entity" type="submit" disabled={updating} className="btn btn-primary mr-2">
                 <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>
             </AvForm>
           )}
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };
