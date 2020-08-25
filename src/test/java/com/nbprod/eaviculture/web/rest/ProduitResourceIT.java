@@ -14,7 +14,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
-import java.math.BigDecimal;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,9 +36,6 @@ public class ProduitResourceIT {
     private static final String DEFAULT_DESIGNATION = "AAAAAAAAAA";
     private static final String UPDATED_DESIGNATION = "BBBBBBBBBB";
 
-    private static final BigDecimal DEFAULT_PRIX_UNITAIRE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_PRIX_UNITAIRE = new BigDecimal(2);
-
     @Autowired
     private ProduitRepository produitRepository;
 
@@ -60,8 +56,7 @@ public class ProduitResourceIT {
     public static Produit createEntity(EntityManager em) {
         Produit produit = new Produit()
             .codeProduit(DEFAULT_CODE_PRODUIT)
-            .designation(DEFAULT_DESIGNATION)
-            .prixUnitaire(DEFAULT_PRIX_UNITAIRE);
+            .designation(DEFAULT_DESIGNATION);
         return produit;
     }
     /**
@@ -73,8 +68,7 @@ public class ProduitResourceIT {
     public static Produit createUpdatedEntity(EntityManager em) {
         Produit produit = new Produit()
             .codeProduit(UPDATED_CODE_PRODUIT)
-            .designation(UPDATED_DESIGNATION)
-            .prixUnitaire(UPDATED_PRIX_UNITAIRE);
+            .designation(UPDATED_DESIGNATION);
         return produit;
     }
 
@@ -100,7 +94,6 @@ public class ProduitResourceIT {
         Produit testProduit = produitList.get(produitList.size() - 1);
         assertThat(testProduit.getCodeProduit()).isEqualTo(DEFAULT_CODE_PRODUIT);
         assertThat(testProduit.getDesignation()).isEqualTo(DEFAULT_DESIGNATION);
-        assertThat(testProduit.getPrixUnitaire()).isEqualTo(DEFAULT_PRIX_UNITAIRE);
     }
 
     @Test
@@ -135,8 +128,7 @@ public class ProduitResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(produit.getId().intValue())))
             .andExpect(jsonPath("$.[*].codeProduit").value(hasItem(DEFAULT_CODE_PRODUIT)))
-            .andExpect(jsonPath("$.[*].designation").value(hasItem(DEFAULT_DESIGNATION)))
-            .andExpect(jsonPath("$.[*].prixUnitaire").value(hasItem(DEFAULT_PRIX_UNITAIRE.intValue())));
+            .andExpect(jsonPath("$.[*].designation").value(hasItem(DEFAULT_DESIGNATION)));
     }
     
     @Test
@@ -151,8 +143,7 @@ public class ProduitResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(produit.getId().intValue()))
             .andExpect(jsonPath("$.codeProduit").value(DEFAULT_CODE_PRODUIT))
-            .andExpect(jsonPath("$.designation").value(DEFAULT_DESIGNATION))
-            .andExpect(jsonPath("$.prixUnitaire").value(DEFAULT_PRIX_UNITAIRE.intValue()));
+            .andExpect(jsonPath("$.designation").value(DEFAULT_DESIGNATION));
     }
 
     @Test
@@ -177,8 +168,7 @@ public class ProduitResourceIT {
         em.detach(updatedProduit);
         updatedProduit
             .codeProduit(UPDATED_CODE_PRODUIT)
-            .designation(UPDATED_DESIGNATION)
-            .prixUnitaire(UPDATED_PRIX_UNITAIRE);
+            .designation(UPDATED_DESIGNATION);
 
         restProduitMockMvc.perform(put("/api/produits")
             .contentType(MediaType.APPLICATION_JSON)
@@ -191,7 +181,6 @@ public class ProduitResourceIT {
         Produit testProduit = produitList.get(produitList.size() - 1);
         assertThat(testProduit.getCodeProduit()).isEqualTo(UPDATED_CODE_PRODUIT);
         assertThat(testProduit.getDesignation()).isEqualTo(UPDATED_DESIGNATION);
-        assertThat(testProduit.getPrixUnitaire()).isEqualTo(UPDATED_PRIX_UNITAIRE);
     }
 
     @Test

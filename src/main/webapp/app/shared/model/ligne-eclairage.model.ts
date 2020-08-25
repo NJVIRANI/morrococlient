@@ -1,5 +1,3 @@
-import { IBatiment } from 'app/shared/model/batiment.model';
-
 export interface ILigneEclairage {
   id?: number;
   codeLigne?: string;
@@ -8,7 +6,6 @@ export interface ILigneEclairage {
   luxMax?: number;
   luxMin?: number;
   luxChoisi?: number;
-  batiment?: IBatiment;
 }
 
 export const defaultValue: Readonly<ILigneEclairage> = {

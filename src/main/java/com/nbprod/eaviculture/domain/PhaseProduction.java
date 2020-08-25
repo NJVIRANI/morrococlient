@@ -45,13 +45,13 @@ public class PhaseProduction implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<LogParametreEnvironement> logParametreEnvironements = new HashSet<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties("phaseProductions")
-    private Batiment batiment;
+    @OneToMany(mappedBy = "phaseProduction")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Depense> listeDepenses = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("phaseProductions")
-    private Depense listeDepenses;
+    private Batiment batiment;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -152,6 +152,31 @@ public class PhaseProduction implements Serializable {
         this.logParametreEnvironements = logParametreEnvironements;
     }
 
+    public Set<Depense> getListeDepenses() {
+        return listeDepenses;
+    }
+
+    public PhaseProduction listeDepenses(Set<Depense> depenses) {
+        this.listeDepenses = depenses;
+        return this;
+    }
+
+    public PhaseProduction addListeDepenses(Depense depense) {
+        this.listeDepenses.add(depense);
+        depense.setPhaseProduction(this);
+        return this;
+    }
+
+    public PhaseProduction removeListeDepenses(Depense depense) {
+        this.listeDepenses.remove(depense);
+        depense.setPhaseProduction(null);
+        return this;
+    }
+
+    public void setListeDepenses(Set<Depense> depenses) {
+        this.listeDepenses = depenses;
+    }
+
     public Batiment getBatiment() {
         return batiment;
     }
@@ -163,19 +188,6 @@ public class PhaseProduction implements Serializable {
 
     public void setBatiment(Batiment batiment) {
         this.batiment = batiment;
-    }
-
-    public Depense getListeDepenses() {
-        return listeDepenses;
-    }
-
-    public PhaseProduction listeDepenses(Depense depense) {
-        this.listeDepenses = depense;
-        return this;
-    }
-
-    public void setListeDepenses(Depense depense) {
-        this.listeDepenses = depense;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -14,15 +14,18 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "tva",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "etatDepense",
             "fieldType": "String"
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "produit",
+            "otherEntityRelationshipName": "depense",
+            "relationshipName": "produit",
+            "otherEntityField": "id"
+        },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "fournisseur",
@@ -35,6 +38,13 @@
             "otherEntityName": "facture",
             "otherEntityRelationshipName": "depense",
             "relationshipName": "facture",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "phaseProduction",
+            "otherEntityRelationshipName": "listeDepenses",
+            "relationshipName": "phaseProduction",
             "otherEntityField": "id"
         }
     ],

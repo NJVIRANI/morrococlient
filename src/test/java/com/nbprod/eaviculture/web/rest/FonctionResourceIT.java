@@ -30,9 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class FonctionResourceIT {
 
-    private static final String DEFAULT_PRENOM = "AAAAAAAAAA";
-    private static final String UPDATED_PRENOM = "BBBBBBBBBB";
-
     private static final String DEFAULT_CODE_FONCTION = "AAAAAAAAAA";
     private static final String UPDATED_CODE_FONCTION = "BBBBBBBBBB";
 
@@ -58,7 +55,6 @@ public class FonctionResourceIT {
      */
     public static Fonction createEntity(EntityManager em) {
         Fonction fonction = new Fonction()
-            .prenom(DEFAULT_PRENOM)
             .codeFonction(DEFAULT_CODE_FONCTION)
             .description(DEFAULT_DESCRIPTION);
         return fonction;
@@ -71,7 +67,6 @@ public class FonctionResourceIT {
      */
     public static Fonction createUpdatedEntity(EntityManager em) {
         Fonction fonction = new Fonction()
-            .prenom(UPDATED_PRENOM)
             .codeFonction(UPDATED_CODE_FONCTION)
             .description(UPDATED_DESCRIPTION);
         return fonction;
@@ -97,7 +92,6 @@ public class FonctionResourceIT {
         List<Fonction> fonctionList = fonctionRepository.findAll();
         assertThat(fonctionList).hasSize(databaseSizeBeforeCreate + 1);
         Fonction testFonction = fonctionList.get(fonctionList.size() - 1);
-        assertThat(testFonction.getPrenom()).isEqualTo(DEFAULT_PRENOM);
         assertThat(testFonction.getCodeFonction()).isEqualTo(DEFAULT_CODE_FONCTION);
         assertThat(testFonction.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
@@ -133,7 +127,6 @@ public class FonctionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(fonction.getId().intValue())))
-            .andExpect(jsonPath("$.[*].prenom").value(hasItem(DEFAULT_PRENOM)))
             .andExpect(jsonPath("$.[*].codeFonction").value(hasItem(DEFAULT_CODE_FONCTION)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
     }
@@ -149,7 +142,6 @@ public class FonctionResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(fonction.getId().intValue()))
-            .andExpect(jsonPath("$.prenom").value(DEFAULT_PRENOM))
             .andExpect(jsonPath("$.codeFonction").value(DEFAULT_CODE_FONCTION))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
     }
@@ -175,7 +167,6 @@ public class FonctionResourceIT {
         // Disconnect from session so that the updates on updatedFonction are not directly saved in db
         em.detach(updatedFonction);
         updatedFonction
-            .prenom(UPDATED_PRENOM)
             .codeFonction(UPDATED_CODE_FONCTION)
             .description(UPDATED_DESCRIPTION);
 
@@ -188,7 +179,6 @@ public class FonctionResourceIT {
         List<Fonction> fonctionList = fonctionRepository.findAll();
         assertThat(fonctionList).hasSize(databaseSizeBeforeUpdate);
         Fonction testFonction = fonctionList.get(fonctionList.size() - 1);
-        assertThat(testFonction.getPrenom()).isEqualTo(UPDATED_PRENOM);
         assertThat(testFonction.getCodeFonction()).isEqualTo(UPDATED_CODE_FONCTION);
         assertThat(testFonction.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }

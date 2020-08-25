@@ -10,14 +10,7 @@
             "fieldType": "Long"
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "ligneEclairage",
-            "otherEntityRelationshipName": "batiment",
-            "relationshipName": "ligneEclairage"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20200820111300",
     "entityTableName": "batiment",
     "dto": "no",

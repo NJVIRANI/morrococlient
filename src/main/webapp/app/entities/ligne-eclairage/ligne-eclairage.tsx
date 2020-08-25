@@ -39,7 +39,6 @@ export const LigneEclairage = (props: ILigneEclairageProps) => {
                 <th>Lux Max</th>
                 <th>Lux Min</th>
                 <th>Lux Choisi</th>
-                <th>Batiment</th>
                 <th />
               </tr>
             </thead>
@@ -57,9 +56,6 @@ export const LigneEclairage = (props: ILigneEclairageProps) => {
                   <td>{ligneEclairage.luxMax}</td>
                   <td>{ligneEclairage.luxMin}</td>
                   <td>{ligneEclairage.luxChoisi}</td>
-                  <td>
-                    {ligneEclairage.batiment ? <Link to={`batiment/${ligneEclairage.batiment.id}`}>{ligneEclairage.batiment.id}</Link> : ''}
-                  </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${ligneEclairage.id}`} color="info" size="sm">

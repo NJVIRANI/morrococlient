@@ -1,6 +1,5 @@
 package com.nbprod.eaviculture.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -40,10 +39,6 @@ public class LigneEclairage implements Serializable {
 
     @Column(name = "lux_choisi")
     private Integer luxChoisi;
-
-    @ManyToOne
-    @JsonIgnoreProperties("ligneEclairages")
-    private Batiment batiment;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -130,19 +125,6 @@ public class LigneEclairage implements Serializable {
 
     public void setLuxChoisi(Integer luxChoisi) {
         this.luxChoisi = luxChoisi;
-    }
-
-    public Batiment getBatiment() {
-        return batiment;
-    }
-
-    public LigneEclairage batiment(Batiment batiment) {
-        this.batiment = batiment;
-        return this;
-    }
-
-    public void setBatiment(Batiment batiment) {
-        this.batiment = batiment;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

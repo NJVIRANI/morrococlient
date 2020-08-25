@@ -60,6 +60,7 @@ public class CacheConfiguration {
             createCache(cm, com.nbprod.eaviculture.domain.Vente.class.getName());
             createCache(cm, com.nbprod.eaviculture.domain.Client.class.getName());
             createCache(cm, com.nbprod.eaviculture.domain.LogParametreEnvironement.class.getName());
+            createCache(cm, com.nbprod.eaviculture.domain.PhaseProduction.class.getName() + ".listeDepenses");
             // jhipster-needle-ehcache-add-entry
         };
     }

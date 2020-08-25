@@ -41,9 +41,6 @@ public class DepenseResourceIT {
     private static final LocalDate DEFAULT_DATE_DEMANDE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_DEMANDE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Integer DEFAULT_TVA = 1;
-    private static final Integer UPDATED_TVA = 2;
-
     private static final String DEFAULT_ETAT_DEPENSE = "AAAAAAAAAA";
     private static final String UPDATED_ETAT_DEPENSE = "BBBBBBBBBB";
 
@@ -69,7 +66,6 @@ public class DepenseResourceIT {
             .codeDepense(DEFAULT_CODE_DEPENSE)
             .quantite(DEFAULT_QUANTITE)
             .dateDemande(DEFAULT_DATE_DEMANDE)
-            .tva(DEFAULT_TVA)
             .etatDepense(DEFAULT_ETAT_DEPENSE);
         return depense;
     }
@@ -84,7 +80,6 @@ public class DepenseResourceIT {
             .codeDepense(UPDATED_CODE_DEPENSE)
             .quantite(UPDATED_QUANTITE)
             .dateDemande(UPDATED_DATE_DEMANDE)
-            .tva(UPDATED_TVA)
             .etatDepense(UPDATED_ETAT_DEPENSE);
         return depense;
     }
@@ -112,7 +107,6 @@ public class DepenseResourceIT {
         assertThat(testDepense.getCodeDepense()).isEqualTo(DEFAULT_CODE_DEPENSE);
         assertThat(testDepense.getQuantite()).isEqualTo(DEFAULT_QUANTITE);
         assertThat(testDepense.getDateDemande()).isEqualTo(DEFAULT_DATE_DEMANDE);
-        assertThat(testDepense.getTva()).isEqualTo(DEFAULT_TVA);
         assertThat(testDepense.getEtatDepense()).isEqualTo(DEFAULT_ETAT_DEPENSE);
     }
 
@@ -150,7 +144,6 @@ public class DepenseResourceIT {
             .andExpect(jsonPath("$.[*].codeDepense").value(hasItem(DEFAULT_CODE_DEPENSE)))
             .andExpect(jsonPath("$.[*].quantite").value(hasItem(DEFAULT_QUANTITE)))
             .andExpect(jsonPath("$.[*].dateDemande").value(hasItem(DEFAULT_DATE_DEMANDE.toString())))
-            .andExpect(jsonPath("$.[*].tva").value(hasItem(DEFAULT_TVA)))
             .andExpect(jsonPath("$.[*].etatDepense").value(hasItem(DEFAULT_ETAT_DEPENSE)));
     }
     
@@ -168,7 +161,6 @@ public class DepenseResourceIT {
             .andExpect(jsonPath("$.codeDepense").value(DEFAULT_CODE_DEPENSE))
             .andExpect(jsonPath("$.quantite").value(DEFAULT_QUANTITE))
             .andExpect(jsonPath("$.dateDemande").value(DEFAULT_DATE_DEMANDE.toString()))
-            .andExpect(jsonPath("$.tva").value(DEFAULT_TVA))
             .andExpect(jsonPath("$.etatDepense").value(DEFAULT_ETAT_DEPENSE));
     }
 
@@ -196,7 +188,6 @@ public class DepenseResourceIT {
             .codeDepense(UPDATED_CODE_DEPENSE)
             .quantite(UPDATED_QUANTITE)
             .dateDemande(UPDATED_DATE_DEMANDE)
-            .tva(UPDATED_TVA)
             .etatDepense(UPDATED_ETAT_DEPENSE);
 
         restDepenseMockMvc.perform(put("/api/depenses")
@@ -211,7 +202,6 @@ public class DepenseResourceIT {
         assertThat(testDepense.getCodeDepense()).isEqualTo(UPDATED_CODE_DEPENSE);
         assertThat(testDepense.getQuantite()).isEqualTo(UPDATED_QUANTITE);
         assertThat(testDepense.getDateDemande()).isEqualTo(UPDATED_DATE_DEMANDE);
-        assertThat(testDepense.getTva()).isEqualTo(UPDATED_TVA);
         assertThat(testDepense.getEtatDepense()).isEqualTo(UPDATED_ETAT_DEPENSE);
     }
 

@@ -7,8 +7,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Batiment.
@@ -29,10 +27,6 @@ public class Batiment implements Serializable {
 
     @Column(name = "surface")
     private Long surface;
-
-    @OneToMany(mappedBy = "batiment")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<LigneEclairage> ligneEclairages = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -67,31 +61,6 @@ public class Batiment implements Serializable {
 
     public void setSurface(Long surface) {
         this.surface = surface;
-    }
-
-    public Set<LigneEclairage> getLigneEclairages() {
-        return ligneEclairages;
-    }
-
-    public Batiment ligneEclairages(Set<LigneEclairage> ligneEclairages) {
-        this.ligneEclairages = ligneEclairages;
-        return this;
-    }
-
-    public Batiment addLigneEclairage(LigneEclairage ligneEclairage) {
-        this.ligneEclairages.add(ligneEclairage);
-        ligneEclairage.setBatiment(this);
-        return this;
-    }
-
-    public Batiment removeLigneEclairage(LigneEclairage ligneEclairage) {
-        this.ligneEclairages.remove(ligneEclairage);
-        ligneEclairage.setBatiment(null);
-        return this;
-    }
-
-    public void setLigneEclairages(Set<LigneEclairage> ligneEclairages) {
-        this.ligneEclairages = ligneEclairages;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

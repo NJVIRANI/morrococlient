@@ -32,23 +32,17 @@ public class Facture implements Serializable {
     @Column(name = "date_facturation")
     private LocalDate dateFacturation;
 
-    @Column(name = "prix_unite", precision = 21, scale = 2)
-    private BigDecimal prixUnite;
+    @Column(name = "prix_unit", precision = 21, scale = 2)
+    private BigDecimal prixUnit;
 
     @Column(name = "tva")
     private Integer tva;
-
-    @Column(name = "quantite")
-    private Integer quantite;
 
     @Column(name = "frais_livraison")
     private Long fraisLivraison;
 
     @Column(name = "method_paiment")
     private String methodPaiment;
-
-    @Column(name = "etat_facture")
-    private String etatFacture;
 
     @OneToMany(mappedBy = "facture")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -89,17 +83,17 @@ public class Facture implements Serializable {
         this.dateFacturation = dateFacturation;
     }
 
-    public BigDecimal getPrixUnite() {
-        return prixUnite;
+    public BigDecimal getPrixUnit() {
+        return prixUnit;
     }
 
-    public Facture prixUnite(BigDecimal prixUnite) {
-        this.prixUnite = prixUnite;
+    public Facture prixUnit(BigDecimal prixUnit) {
+        this.prixUnit = prixUnit;
         return this;
     }
 
-    public void setPrixUnite(BigDecimal prixUnite) {
-        this.prixUnite = prixUnite;
+    public void setPrixUnit(BigDecimal prixUnit) {
+        this.prixUnit = prixUnit;
     }
 
     public Integer getTva() {
@@ -113,19 +107,6 @@ public class Facture implements Serializable {
 
     public void setTva(Integer tva) {
         this.tva = tva;
-    }
-
-    public Integer getQuantite() {
-        return quantite;
-    }
-
-    public Facture quantite(Integer quantite) {
-        this.quantite = quantite;
-        return this;
-    }
-
-    public void setQuantite(Integer quantite) {
-        this.quantite = quantite;
     }
 
     public Long getFraisLivraison() {
@@ -152,19 +133,6 @@ public class Facture implements Serializable {
 
     public void setMethodPaiment(String methodPaiment) {
         this.methodPaiment = methodPaiment;
-    }
-
-    public String getEtatFacture() {
-        return etatFacture;
-    }
-
-    public Facture etatFacture(String etatFacture) {
-        this.etatFacture = etatFacture;
-        return this;
-    }
-
-    public void setEtatFacture(String etatFacture) {
-        this.etatFacture = etatFacture;
     }
 
     public Set<Depense> getDepenses() {
@@ -215,12 +183,10 @@ public class Facture implements Serializable {
             "id=" + getId() +
             ", numeroFacture='" + getNumeroFacture() + "'" +
             ", dateFacturation='" + getDateFacturation() + "'" +
-            ", prixUnite=" + getPrixUnite() +
+            ", prixUnit=" + getPrixUnit() +
             ", tva=" + getTva() +
-            ", quantite=" + getQuantite() +
             ", fraisLivraison=" + getFraisLivraison() +
             ", methodPaiment='" + getMethodPaiment() + "'" +
-            ", etatFacture='" + getEtatFacture() + "'" +
             "}";
     }
 }

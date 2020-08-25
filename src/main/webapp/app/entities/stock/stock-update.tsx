@@ -53,14 +53,10 @@ export const StockUpdate = (props: IStockUpdateProps) => {
   };
 
   return (
-    <div>
-      <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="eAvicultureApp.stock.home.createOrEditLabel">Create or edit a Stock</h2>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md="8">
+    <div className="col-12 grid-margin stretch-card">
+      <div className="card">
+        <div className="card-body">
+          <h4 className="card-title" id="eAvicultureApp.batiment.home.createOrEditLabel">Create or edit a Stock</h4>
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -83,20 +79,20 @@ export const StockUpdate = (props: IStockUpdateProps) => {
                 </Label>
                 <AvField id="stock-surface" type="string" className="form-control" name="surface" />
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/stock" replace color="info">
+              <Button tag={Link} id="cancel-save" to="/stock" className="btn btn-light">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
-              <Button color="primary" id="save-entity" type="submit" disabled={updating}>
+              <Button color="primary" id="save-entity" type="submit" disabled={updating} className="btn btn-primary mr-2">
                 <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>
             </AvForm>
           )}
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };

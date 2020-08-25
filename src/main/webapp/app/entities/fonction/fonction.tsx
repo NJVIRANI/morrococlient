@@ -19,7 +19,9 @@ export const Fonction = (props: IFonctionProps) => {
 
   const { fonctionList, match, loading } = props;
   return (
-    <div>
+    <div className="col-lg-12 grid-margin stretch-card">
+      <div className="card">
+        <div className="card-body">
       <h2 id="fonction-heading">
         Fonctions
         <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
@@ -29,11 +31,10 @@ export const Fonction = (props: IFonctionProps) => {
       </h2>
       <div className="table-responsive">
         {fonctionList && fonctionList.length > 0 ? (
-          <Table responsive>
-            <thead>
+              <table className="table table-striped">
+              <thead>
               <tr>
                 <th>ID</th>
-                <th>Prenom</th>
                 <th>Code Fonction</th>
                 <th>Description</th>
                 <th />
@@ -47,7 +48,6 @@ export const Fonction = (props: IFonctionProps) => {
                       {fonction.id}
                     </Button>
                   </td>
-                  <td>{fonction.prenom}</td>
                   <td>{fonction.codeFonction}</td>
                   <td>{fonction.description}</td>
                   <td className="text-right">
@@ -66,10 +66,12 @@ export const Fonction = (props: IFonctionProps) => {
                 </tr>
               ))}
             </tbody>
-          </Table>
+          </table>
         ) : (
           !loading && <div className="alert alert-warning">No Fonctions found</div>
         )}
+      </div>
+      </div>
       </div>
     </div>
   );

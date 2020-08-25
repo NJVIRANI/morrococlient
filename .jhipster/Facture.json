@@ -10,15 +10,11 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "prixUnite",
+            "fieldName": "prixUnit",
             "fieldType": "BigDecimal"
         },
         {
             "fieldName": "tva",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "quantite",
             "fieldType": "Integer"
         },
         {
@@ -27,10 +23,6 @@
         },
         {
             "fieldName": "methodPaiment",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "etatFacture",
             "fieldType": "String"
         }
     ],

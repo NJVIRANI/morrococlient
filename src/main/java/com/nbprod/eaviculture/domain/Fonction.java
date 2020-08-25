@@ -22,9 +22,6 @@ public class Fonction implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "prenom")
-    private String prenom;
-
     @Column(name = "code_fonction")
     private String codeFonction;
 
@@ -38,19 +35,6 @@ public class Fonction implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public Fonction prenom(String prenom) {
-        this.prenom = prenom;
-        return this;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     public String getCodeFonction() {
@@ -100,7 +84,6 @@ public class Fonction implements Serializable {
     public String toString() {
         return "Fonction{" +
             "id=" + getId() +
-            ", prenom='" + getPrenom() + "'" +
             ", codeFonction='" + getCodeFonction() + "'" +
             ", description='" + getDescription() + "'" +
             "}";

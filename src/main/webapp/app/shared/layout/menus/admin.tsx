@@ -99,6 +99,99 @@ const adminMenuItems = (
         </span>
       </Link>
     </li>
+    <li className="nav-item">
+      <Link to="/employe" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Employe
+        </span>
+      </Link>
+    </li>
+
+    <li className="nav-item">
+      <Link to="/facture" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Facture
+        </span>
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/fonction" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Fonction
+        </span>
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/fournisseur" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Fournisseur
+        </span>
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/ligne-eclairage" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Ligne-eclairage
+        </span>
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/log-parametre-environement" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+        Log-parametre-environement
+        </span>
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/phase-production" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+        Phase-production
+        </span>
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/produit" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Produit
+        </span>
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/stock" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Stock
+        </span>
+      </Link>
+    </li>
+
+    <li className="nav-item">
+      <Link to="/type-produit" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Type Produit
+        </span>
+      </Link>
+    </li>
+
+    <li className="nav-item">
+      <Link to="/vente" className="nav-link">
+        <i className="mdi mdi-bell-outline menu-icon" />
+        <span className="menu-title">
+          Vente
+        </span>
+      </Link>
+    </li>
+
+
   </>
 );
 

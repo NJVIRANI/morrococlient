@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, Row, Col, Label } from 'reactstrap';
 import { ICrudGetAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 
 import { IRootState } from 'app/shared/reducers';
 import { getEntity } from './facture.reducer';
 import { IFacture } from 'app/shared/model/facture.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 
-export interface IFactureDetailProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IFactureDetailProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> { }
 
 export const FactureDetail = (props: IFactureDetailProps) => {
   useEffect(() => {
@@ -19,56 +20,69 @@ export const FactureDetail = (props: IFactureDetailProps) => {
 
   const { factureEntity } = props;
   return (
-    <Row>
-      <Col md="8">
-        <h2>
-          Facture [<b>{factureEntity.id}</b>]
+    <div className="col-12 grid-margin stretch-card">
+      <div className="card">
+        <div className="card-body">
+          <h2>
+            Facture [<b>{factureEntity.id}</b>]
         </h2>
-        <dl className="jh-entity-details">
-          <dt>
-            <span id="numeroFacture">Numero Facture</span>
-          </dt>
-          <dd>{factureEntity.numeroFacture}</dd>
-          <dt>
-            <span id="dateFacturation">Date Facturation</span>
-          </dt>
-          <dd>
-            <TextFormat value={factureEntity.dateFacturation} type="date" format={APP_LOCAL_DATE_FORMAT} />
-          </dd>
-          <dt>
-            <span id="prixUnite">Prix Unite</span>
-          </dt>
-          <dd>{factureEntity.prixUnite}</dd>
-          <dt>
-            <span id="tva">Tva</span>
-          </dt>
-          <dd>{factureEntity.tva}</dd>
-          <dt>
-            <span id="quantite">Quantite</span>
-          </dt>
-          <dd>{factureEntity.quantite}</dd>
-          <dt>
-            <span id="fraisLivraison">Frais Livraison</span>
-          </dt>
-          <dd>{factureEntity.fraisLivraison}</dd>
-          <dt>
-            <span id="methodPaiment">Method Paiment</span>
-          </dt>
-          <dd>{factureEntity.methodPaiment}</dd>
-          <dt>
-            <span id="etatFacture">Etat Facture</span>
-          </dt>
-          <dd>{factureEntity.etatFacture}</dd>
-        </dl>
-        <Button tag={Link} to="/facture" replace color="info">
-          <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
-        </Button>
+          <AvForm>
+            <div className="row">
+              <div className="col-12 entity-setup-box">
+                <div>
+                  <AvGroup>
+                    <Label id="nameLabel" for="name">
+                      <span id="numeroFacture">Numero Facture</span>
+                    </Label>
+                    <input type="text" className="form-control" value={factureEntity.numeroFacture} readOnly />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="descrLabel" for="descr">
+                      <span id="dateFacturation">Date Facturation</span>
+                    </Label>
+                    <TextFormat value={factureEntity.dateFacturation} type="date" format={APP_LOCAL_DATE_FORMAT} />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="descrLabel" for="descr">
+                      <span id="prixUnit">Prix Unit</span>
+                    </Label>
+                    <input type="text" className="form-control" value={factureEntity.prixUnit} readOnly />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="descrLabel" for="descr">
+                      <span id="tva">Tva</span>
+                    </Label>
+                    <input type="text" className="form-control" value={factureEntity.tva} readOnly />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="descrLabel" for="descr">
+                      <span id="fraisLivraison">Frais Livraison</span>
+                    </Label>
+                    <input type="text" className="form-control" value={factureEntity.fraisLivraison} readOnly />
+                  </AvGroup>
+                  <AvGroup>
+                    <Label id="descrLabel" for="descr">
+                      <span id="methodPaiment">Method Paiment</span>
+                    </Label>
+                    <input type="text" className="form-control" value={factureEntity.methodPaiment} readOnly />
+                  </AvGroup>
+
+                </div>
+                <div className="card-footer">
+                  <Button tag={Link} to="/facture" replace color="info">
+                    <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
+                  </Button>
         &nbsp;
         <Button tag={Link} to={`/facture/${factureEntity.id}/edit`} replace color="primary">
-          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
-        </Button>
-      </Col>
-    </Row>
+                    <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </AvForm>
+        </div>
+      </div>
+    </div>
   );
 };
 
